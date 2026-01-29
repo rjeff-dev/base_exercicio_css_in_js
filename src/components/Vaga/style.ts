@@ -1,36 +1,35 @@
 import styled from 'styled-components'
-import Fonts from '../Fonts/fonts'
 
 export const Vaga = styled.li`
-  border: 1px solid ${(props) => props.theme.corPrincipal};
-  background-color: ${(props) => props.theme.corSecundaria};
-  color: ${(props) => props.theme.corPrincipal};
+  font-family: Lato, sans-serif;
+  border: 1px solid ${({ theme }) => theme.principal};
+  background-color: ${({ theme }) => theme.secundaria};
+  color: ${({ theme }) => theme.principal};
   padding: 16px;
-  transition: all 0.3s ease;
+  transition: all ease 0.3s;
   border-radius: 8px;
 
   &:hover {
-    background-color: ${(props) => props.theme.corPrincipal};
-    color: ${(props) => props.theme.corSecundaria};
-  }
+    background-color: ${({ theme }) => theme.principal};
+    color: ${({ theme }) => theme.secundaria};
 
-  &:hover a {
-    border-color: ${(props) => props.theme.corPrincipal};
-    background-color: ${(props) => props.theme.corSecundaria};
-    color: ${(props) => props.theme.corPrincipal};
+    a {
+      border-color: ${({ theme }) => theme.principal};
+      background-color: ${({ theme }) => theme.secundaria};
+      color: ${({ theme }) => theme.principal};
+    }
   }
 `
 
 export const VagaTitulo = styled.h3`
-  font-family: ${Fonts.family.title};
-  font-weight: ${Fonts.weight.bold};
+  font-weight: bold;
   margin-bottom: 16px;
 `
 
 export const VagaLink = styled.a`
-  border-color: ${(props) => props.theme.corSecundaria};
-  background-color: ${(props) => props.theme.corPrincipal};
-  color: ${(props) => props.theme.corSecundaria};
+  border: 1px solid ${({ theme }) => theme.secundaria};
+  background-color: ${({ theme }) => theme.principal};
+  color: ${({ theme }) => theme.secundaria};
   display: inline-block;
   padding: 8px 16px;
   text-decoration: none;

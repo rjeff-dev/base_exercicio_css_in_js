@@ -1,6 +1,6 @@
 const temaLight = {
-  corPrincipal: '#a7727d',
-  corSecundaria: '#f9f5e7',
+  principal: '#a7727d',
+  secundaria: '#f9f5e7',
   fonts: {
     title: 'Gloock, serif'
   }

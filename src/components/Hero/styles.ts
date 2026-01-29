@@ -14,15 +14,18 @@ export const FormHero = styled.form`
     content: '';
     position: absolute;
     inset: 0;
-    background-color: ${(props) => props.theme.corPrincipal};
+    background-color: ${({ theme }) => theme.principal};
     opacity: 0.7;
-    z-index: 0;
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 24px 0;
   }
 `
 
 export const Content = styled.div`
   position: relative;
-  z-index: 1;
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
@@ -34,8 +37,9 @@ export const Content = styled.div`
 `
 
 export const HeroTitle = styled.h2`
-  font-family: ${(props) => props.theme.fonts.title};
+  font-family: ${({ theme }) => theme.fonts.title};
   font-size: 48px;
+  text-align: center;
 
   @media (max-width: 768px) {
     font-size: 32px;
