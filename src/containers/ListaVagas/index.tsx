@@ -1,12 +1,13 @@
+// src/containers/ListaVagas/index.tsx
 import { useState } from 'react'
-import FormVagas from '../../components/FormVagas'
 
+import FormVagas from '../../components/FormVagas'
 import Vaga from '../../components/Vaga'
 
-import styles from './ListaVagas.module.css'
+import { Lista } from './ListaVagas'
 
-type Vaga = {
-  id: string
+type VagaType = {
+  id: number
   titulo: string
   localizacao: string
   nivel: string
@@ -16,7 +17,7 @@ type Vaga = {
   requisitos: string[]
 }
 
-const vagas = [
+const vagas: VagaType[] = [
   {
     id: 1,
     titulo: 'Desenvolvedor front-end',
@@ -76,44 +77,35 @@ const vagas = [
     salarioMin: 12000,
     salarioMax: 15000,
     requisitos: ['HTML', 'CSS', 'JavaScript', 'jQuery']
-  },
-  {
-    id: 7,
-    titulo: 'Desenvolvedor front-end',
-    localizacao: 'São Paulo/SP',
-    nivel: 'junior',
-    modalidade: 'clt',
-    salarioMin: 4000,
-    salarioMax: 5000,
-    requisitos: ['HTML', 'CSS', 'JavaScript', 'jQuery']
   }
 ]
 
 const ListaVagas = () => {
-  const [filtro, setFiltro] = useState<string>('')
+  const [filtro, setFiltro] = useState('')
 
-  const vagasFiltradas = vagas.filter(
-    (x) => x.titulo.toLocaleLowerCase().search(filtro) >= 0
+  const vagasFiltradas = vagas.filter((vaga) =>
+    vaga.titulo.toLowerCase().includes(filtro)
   )
 
   return (
-    <div>
-      <FormVagas aoPesquisar={(termo: string) => setFiltro(termo)} />
-      <ul className={styles.vagas}>
-        {vagasFiltradas.map((vag) => (
+    <>
+      <FormVagas aoPesquisar={setFiltro} />
+
+      <Lista>
+        {vagasFiltradas.map((vaga) => (
           <Vaga
-            key={vag.id}
-            titulo={vag.titulo}
-            localizacao={vag.localizacao}
-            nivel={vag.nivel}
-            modalidade={vag.modalidade}
-            salarioMin={vag.salarioMin}
-            salarioMax={vag.salarioMax}
-            requisitos={vag.requisitos}
+            key={vaga.id}
+            titulo={vaga.titulo}
+            localizacao={vaga.localizacao}
+            nivel={vaga.nivel}
+            modalidade={vaga.modalidade}
+            salarioMin={vaga.salarioMin}
+            salarioMax={vaga.salarioMax}
+            requisitos={vaga.requisitos}
           />
         ))}
-      </ul>
-    </div>
+      </Lista>
+    </>
   )
 }
 
